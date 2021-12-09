@@ -1,0 +1,7 @@
+;nombres reservados: temp, print, inicioPlot, finPlot, func, end
+;Comentario: Hola mundo de mi primer lenguaje
+func main
+varA = "HolamundoRython!"
+print varA
+end
+
