@@ -82,10 +82,12 @@ void ContextoRy::cargarArchivo(const std::string& nombreArchivo){
             }else if(tokens.size()==5){//Verificar funciones aritméticas
                 if(esLiteralQ(tokens[2])&&esLiteralQ(tokens[4])){
                     funcActual.operaciones.emplace_back(Operacion::Tipo::AsignarLiteral, tokens[0].toStdString(), operar(tokens[2], tokens[3], tokens[4]));
-                }if(!esLiteralQ(tokens[2])&&esLiteralQ(tokens[4])){
+                }else if(!esLiteralQ(tokens[2])&&esLiteralQ(tokens[4])){
                     funcActual.operaciones.emplace_back(Operacion::Tipo::AsignarLiteral, tokens[0].toStdString(), operar(variables[tokens[2].toStdString()], tokens[3], tokens[4]));
-                }if(esLiteralQ(tokens[2])&&!esLiteralQ(tokens[4])){
+                }else if(esLiteralQ(tokens[2])&&!esLiteralQ(tokens[4])){
                     funcActual.operaciones.emplace_back(Operacion::Tipo::AsignarLiteral, tokens[0].toStdString(), operar(tokens[2], tokens[3], variables[tokens[4].toStdString()]));
+                }else if(!esLiteralQ(tokens[2])&&!esLiteralQ(tokens[4])){
+                    funcActual.operaciones.emplace_back(Operacion::Tipo::AsignarLiteral, tokens[0].toStdString(), operar(variables[tokens[2].toStdString()], tokens[3], variables[tokens[4].toStdString()]));
                 }
             }else{//Verificar funciones sin, sqrt
                  if(esLiteralQ(tokens[3])){
